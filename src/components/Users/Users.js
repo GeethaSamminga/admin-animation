@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table, Modal, Spinner, Alert } from "react-bootstrap";
-
 import { FaEye, FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 
@@ -17,8 +16,12 @@ const Users = () => {
         const response = await axios.get(
           "https://animation-backend.vercel.app/api/users/"
         );
-        setUsers(response.data);
-        console.log(response.data);
+        // Filter out admin users and only show users with the "user" role
+        const filteredUsers = response.data.filter(
+          (user) => user.role === "User"
+        );
+        setUsers(filteredUsers);
+        console.log(filteredUsers);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -54,7 +57,6 @@ const Users = () => {
       <center>
         <h4 className="mb-3">Users Management</h4>
       </center>
-      {/* <p>Manage all user data here.</p>/ */}
 
       {loading ? (
         <div
@@ -126,7 +128,7 @@ const Users = () => {
         </Table>
       ) : (
         <Alert variant="info" className="text-center">
-          No users available.
+          No users present.
         </Alert>
       )}
 

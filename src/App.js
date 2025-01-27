@@ -9,12 +9,9 @@ import NavbarWithSidebar from "./components/navbar/NavBar"; // Updated Navbar to
 import Users from "./components/Users/Users";
 import ServicesList from "./components/causes/CampaignList";
 import Gallery from "./components/gallery/Gallery";
-
 import CampaignForm from "./components/causes/Causes";
 import { Container } from "react-bootstrap";
-
 import LoginPage from "./components/Login";
-
 import Faq from "./components/faqs/faq";
 import ServiceForm from "./components/causes/Causes";
 
@@ -25,9 +22,9 @@ function App() {
 
   // Check if user is logged in when app initializes
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
+    const savedUser = sessionStorage.getItem("user"); // Check sessionStorage for user data
     if (savedUser) {
-      setUser(JSON.parse(savedUser)); // Load user from localStorage
+      setUser(JSON.parse(savedUser)); // Load user from sessionStorage
     }
   }, []);
 
@@ -38,7 +35,6 @@ function App() {
         return <Users />;
       case "Services":
         return <campaigns />;
-
       case "Animations":
         return <Gallery />;
       case "FAQ":
@@ -51,13 +47,13 @@ function App() {
   // Handle login
   const handleLogin = (user) => {
     setUser(user); // Set the user in state
-    localStorage.setItem("user", JSON.stringify(user));
+    sessionStorage.setItem("user", JSON.stringify(user)); // Store user in sessionStorage
   };
 
   // Handle logout
   const handleLogout = () => {
     setUser(null); // Clear user state on logout
-    localStorage.removeItem("user"); // Remove user from localStorage
+    sessionStorage.removeItem("user"); // Remove user from sessionStorage
   };
 
   return (
@@ -85,7 +81,13 @@ function App() {
             {/* Login Page */}
             <Route
               path="/login"
-              element={<LoginPage handleLogin={handleLogin} />}
+              element={
+                user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <LoginPage handleLogin={handleLogin} />
+                )
+              }
             />
 
             {/* Redirect to Users page after login */}
