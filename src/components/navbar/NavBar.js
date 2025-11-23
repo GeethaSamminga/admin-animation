@@ -40,7 +40,7 @@ const NavbarWithoutSidebar = ({ handleLogout }) => {
       // Call logout API
       const token = sessionStorage.getItem("token");
       await axios.post(
-        "https://animation-backend.vercel.app/api/users/logout",
+        "http://localhost:5000/api/users/logout",
         {}, // API may expect a body; send empty if not required
         {
           headers: {

@@ -22,7 +22,7 @@ const FaqList = () => {
   const fetchFaqs = async () => {
     try {
       const response = await axios.get(
-        "https://animation-backend.vercel.app/api/faqs/"
+        "http://localhost:5000/api/faqs/"
       );
       setFaqs(response.data);
     } catch (error) {
@@ -34,7 +34,7 @@ const FaqList = () => {
   const handleDelete = async (id) => {
     setDeletingId(id);
     try {
-      await axios.delete(`https://animation-backend.vercel.app/api/faqs/${id}`);
+      await axios.delete(`http://localhost:5000/api/faqs/${id}`);
       setFaqs((prevFaqs) => prevFaqs.filter((item) => item._id !== id));
     } catch (error) {
       console.error("Error deleting FAQ:", error);

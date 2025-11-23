@@ -26,7 +26,7 @@ const ServicesList = () => {
   const fetchServices = async () => {
     try {
       const response = await axios.get(
-        "https://animation-backend.vercel.app/api/services/"
+        "http://localhost:5000/api/services/"
       );
       setServices(response.data || []);
     } catch (error) {
@@ -37,7 +37,7 @@ const ServicesList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://animation-backend.vercel.app/api/services/${id}`
+        `http://localhost:5000/api/services/${id}`
       );
       fetchServices();
     } catch (error) {

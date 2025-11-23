@@ -14,7 +14,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://animation-backend.vercel.app/api/users/"
+          "http://localhost:5000/api/users/"
         );
         // Filter out admin users and only show users with the "user" role
         const filteredUsers = response.data.filter(
@@ -35,7 +35,7 @@ const Users = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://animation-backend.vercel.app/api/users/${id}`
+        `http://localhost:5000/api/users/${id}`
       );
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
     } catch (error) {

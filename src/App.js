@@ -18,17 +18,16 @@ import ServiceForm from "./components/causes/Causes";
 function App() {
   const [activeComponent, setActiveComponent] = useState("Users");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [user, setUser] = useState(null); // State to track login status
+  const [user, setUser] = useState(null); 
 
-  // Check if user is logged in when app initializes
   useEffect(() => {
-    const savedUser = sessionStorage.getItem("user"); // Check sessionStorage for user data
+    const savedUser = sessionStorage.getItem("user"); 
     if (savedUser) {
-      setUser(JSON.parse(savedUser)); // Load user from sessionStorage
+      setUser(JSON.parse(savedUser));
     }
   }, []);
 
-  // Render a fallback component for components without dedicated routes
+ 
   const renderComponent = () => {
     switch (activeComponent) {
       case "Users":

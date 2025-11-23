@@ -15,7 +15,7 @@ const FaqForm = ({ faq, closeForm, fetchFaqs }) => {
       if (faq) {
         // Update FAQ
         await axios.put(
-          `https://animation-backend.vercel.app/api/faqs/${faq._id}`,
+          `http://localhost:5000/api/faqs/${faq._id}`,
           {
             question,
             answer,
@@ -23,7 +23,7 @@ const FaqForm = ({ faq, closeForm, fetchFaqs }) => {
         );
       } else {
         // Add new FAQ
-        await axios.post("https://animation-backend.vercel.app/api/faqs", {
+        await axios.post("http://localhost:5000/api/faqs", {
           question,
           answer,
         });

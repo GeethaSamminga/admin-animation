@@ -33,7 +33,7 @@ const Gallery = () => {
     const fetchImages = async () => {
       try {
         const response = await axios.get(
-          "https://animation-backend.vercel.app/api/animations/"
+          "http://localhost:5000/api/animations/"
         );
         setImages(response.data);
       } catch (error) {
@@ -50,7 +50,7 @@ const Gallery = () => {
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: "image/*,video/*", // Accept both images and videos
+    accept: "image/*,video/*",
   });
 
   const handleUpload = async () => {
@@ -73,7 +73,7 @@ const Gallery = () => {
       const uploadedFile = cloudinaryResponse.data;
 
       const savedImageResponse = await axios.post(
-        "https://animation-backend.vercel.app/api/animations/add",
+        "http://localhost:5000/api/animations/add",
         {
           title: formData.title,
           category: formData.category,
@@ -161,7 +161,7 @@ const Gallery = () => {
     // Update animation metadata, with or without a new video
     try {
       const response = await axios.put(
-        `https://animation-backend.vercel.app/api/animations/${selectedImage._id}`,
+        `hhttp://localhost:5000/api/animations/${selectedImage._id}`,
         {
           title: formData.title,
           category: formData.category,
@@ -189,7 +189,7 @@ const Gallery = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://animation-backend.vercel.app/api/animations/${id}`
+        `http://localhost:5000/api/animations/${id}`
       );
       setImages((prevImages) => prevImages.filter((image) => image._id !== id));
       showToastMessage("Animation deleted successfully!");

@@ -40,7 +40,7 @@ const ServiceForm = () => {
   const fetchServiceDetails = async (id) => {
     try {
       const response = await axios.get(
-        `https://animation-backend.vercel.app/api/services/${id}`
+        `http://localhost:5000/api/services/${id}`
       );
       const service = response.data;
 
@@ -117,8 +117,8 @@ const ServiceForm = () => {
 
     try {
       const url = id
-        ? `https://animation-backend.vercel.app/api/services/${id}`
-        : "https://animation-backend.vercel.app/api/services/";
+        ? `http://localhost:5000/api/services/${id}`
+        : "http://localhost:5000/api/services/";
       const method = id ? "put" : "post";
 
       await axios[method](url, payload);
