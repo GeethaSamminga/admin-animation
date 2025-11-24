@@ -33,7 +33,7 @@ const Gallery = () => {
     const fetchImages = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/animations/"
+          "https://backend-animation.onrender.com/api/animations/"
         );
         setImages(response.data);
       } catch (error) {
@@ -73,7 +73,7 @@ const Gallery = () => {
       const uploadedFile = cloudinaryResponse.data;
 
       const savedImageResponse = await axios.post(
-        "http://localhost:5000/api/animations/add",
+        "https://backend-animation.onrender.com/api/animations/add",
         {
           title: formData.title,
           category: formData.category,
@@ -161,7 +161,7 @@ const Gallery = () => {
     // Update animation metadata, with or without a new video
     try {
       const response = await axios.put(
-        `hhttp://localhost:5000/api/animations/${selectedImage._id}`,
+        `https://backend-animation.onrender.com/api/animations/${selectedImage._id}`,
         {
           title: formData.title,
           category: formData.category,
@@ -189,7 +189,7 @@ const Gallery = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/animations/${id}`
+        `https://backend-animation.onrender.com/api/animations/${id}`
       );
       setImages((prevImages) => prevImages.filter((image) => image._id !== id));
       showToastMessage("Animation deleted successfully!");

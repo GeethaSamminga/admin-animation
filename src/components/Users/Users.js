@@ -14,7 +14,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/users/"
+          "https://backend-animation.onrender.com/api/users/"
         );
         // Filter out admin users and only show users with the "user" role
         const filteredUsers = response.data.filter(
@@ -35,7 +35,7 @@ const Users = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/users/${id}`
+        `https://backend-animation.onrender.com/api/users/${id}`
       );
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
     } catch (error) {

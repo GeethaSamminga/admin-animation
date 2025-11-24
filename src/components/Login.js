@@ -19,7 +19,7 @@ const LoginPage = ({ handleLogin }) => {
 
       // Make API call to login endpoint
       const response = await axios.post(
-        "http://localhost:5000/api/users/login",
+        "https://backend-animation.onrender.com/api/users/login",
         { email, password }
       );
       console.log(response);

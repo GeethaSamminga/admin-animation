@@ -40,7 +40,7 @@ const ServiceForm = () => {
   const fetchServiceDetails = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/services/${id}`
+        `https://backend-animation.onrender.com/api/services/${id}`
       );
       const service = response.data;
 
@@ -117,8 +117,8 @@ const ServiceForm = () => {
 
     try {
       const url = id
-        ? `http://localhost:5000/api/services/${id}`
-        : "http://localhost:5000/api/services/";
+        ? `https://backend-animation.onrender.com/api/services/${id}`
+        : "https://backend-animation.onrender.com/api/services/";
       const method = id ? "put" : "post";
 
       await axios[method](url, payload);

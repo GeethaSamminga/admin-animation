@@ -15,7 +15,7 @@ const FaqForm = ({ faq, closeForm, fetchFaqs }) => {
       if (faq) {
         // Update FAQ
         await axios.put(
-          `http://localhost:5000/api/faqs/${faq._id}`,
+          `https://backend-animation.onrender.com/api/faqs/${faq._id}`,
           {
             question,
             answer,
@@ -23,7 +23,7 @@ const FaqForm = ({ faq, closeForm, fetchFaqs }) => {
         );
       } else {
         // Add new FAQ
-        await axios.post("http://localhost:5000/api/faqs", {
+        await axios.post("https://backend-animation.onrender.com/api/faqs", {
           question,
           answer,
         });

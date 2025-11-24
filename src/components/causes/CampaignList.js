@@ -26,7 +26,7 @@ const ServicesList = () => {
   const fetchServices = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/services/"
+        "https://backend-animation.onrender.com/api/services/"
       );
       setServices(response.data || []);
     } catch (error) {
@@ -37,7 +37,7 @@ const ServicesList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/services/${id}`
+        `https://backend-animation.onrender.com/api/services/${id}`
       );
       fetchServices();
     } catch (error) {
